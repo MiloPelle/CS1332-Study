@@ -1,0 +1,38 @@
+{
+    "java.project.sourcePaths": ["src", "test"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ],
+
+    // Study mode: no code suggestions of any kind in this project.
+    // Autocomplete popups
+    "editor.quickSuggestions": {
+        "other": "off",
+        "comments": "off",
+        "strings": "off"
+    },
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.wordBasedSuggestions": "off",
+    "editor.snippetSuggestions": "none",
+    "editor.tabCompletion": "off",
+    "editor.acceptSuggestionOnEnter": "off",
+    "java.completion.enabled": false,
+
+    // Method signature popups while typing arguments
+    "editor.parameterHints.enabled": false,
+
+    // Inline gray "ghost text" and AI features (Copilot, next-edit suggestions, chat)
+    "editor.inlineSuggest.enabled": false,
+    "github.copilot.enable": { "*": false },
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "chat.disableAIFeatures": true,
+
+    // Lightbulb quick fixes that write code for you (e.g. "create method", "add import")
+    "editor.lightbulb.enabled": "off",
+    "editor.codeActionsOnSave": {},
+
+    // Faded inline type/parameter-name labels
+    "editor.inlayHints.enabled": "off",
+    "java.inlayHints.parameterNames.enabled": "none"
+}
