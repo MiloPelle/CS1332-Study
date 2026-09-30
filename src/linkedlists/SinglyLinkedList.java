@@ -59,9 +59,26 @@ public class SinglyLinkedList<T> {
      * @throws java.lang.IllegalArgumentException  if data is null
      */
     public void addAtIndex(int index, T data) {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        } else if (data == null) {
+            throw new IllegalArgumentException();
+        }
+        if (index == 0 || size == 0) {
+            addToFront(data);
+        } else {
+            Node<T> curr = head;
+            for (int i = 0; i < index - 1; i++) {
+                curr = curr.next;
+            }
+            curr.setNext(new Node<T>(data, curr.getNext()));
+            if (index == size) {
+                tail = tail.getNext();
+            }
+            size++;
+        }    
     }
+    
 
     /**
      * Adds the element to the front of the list.
@@ -72,8 +89,14 @@ public class SinglyLinkedList<T> {
      * @throws java.lang.IllegalArgumentException if data is null
      */
     public void addToFront(T data) {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (data == null) {
+            throw new IllegalArgumentException();
+        }
+        head = new Node<T>(data, head);
+        size++;
+        if (size == 1) {
+            tail = head;
+        }
     }
 
     /**
@@ -85,8 +108,16 @@ public class SinglyLinkedList<T> {
      * @throws java.lang.IllegalArgumentException if data is null
      */
     public void addToBack(T data) {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (data == null) {
+            throw new IllegalArgumentException();
+        }
+        if (size == 0) {
+            addToFront(data);
+        } else {
+            tail.setNext(new Node<T>(data));
+            tail = tail.getNext();
+            size++;
+        }
     }
 
     /**
@@ -99,8 +130,24 @@ public class SinglyLinkedList<T> {
      * @throws java.lang.IndexOutOfBoundsException if index < 0 or index >= size
      */
     public T removeAtIndex(int index) {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (size == 1 || index == 0) {
+            T temp = removeFromFront();
+            return temp;
+        }
+        Node<T> curr = head;
+        for (int i = 0; i < index - 1; i++) {
+            curr = curr.next;
+        }
+        if (curr.getNext() == tail) {
+            tail = curr;
+        }
+        T temp = curr.getNext().getData();
+        curr.setNext(curr.getNext().getNext());
+        size--;
+        return temp;
     }
 
     /**
@@ -112,8 +159,16 @@ public class SinglyLinkedList<T> {
      * @throws java.util.NoSuchElementException if the list is empty
      */
     public T removeFromFront() {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+        T temp = head.getData();
+        if (tail == head) {
+            tail = null;
+        }
+        head = head.getNext();
+        size--;
+        return temp;
     }
 
     /**
@@ -125,8 +180,24 @@ public class SinglyLinkedList<T> {
      * @throws java.util.NoSuchElementException if the list is empty
      */
     public T removeFromBack() {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        T temp = null;
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+        if (size == 1) {
+            temp = removeFromFront();
+        } else {
+            Node<T> curr = head;
+            while (curr.getNext().getNext() != null) {
+                curr = curr.getNext();
+            }
+            temp = curr.getNext().getData();
+            curr.setNext(null);
+            tail = curr;
+            size--;
+        }
+        return temp;
+
     }
 
     /**
@@ -139,8 +210,14 @@ public class SinglyLinkedList<T> {
      * @throws java.lang.IndexOutOfBoundsException if index < 0 or index >= size
      */
     public T get(int index) {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<T> curr = head;
+        for (int i = 0; i < index; i++) {
+            curr =  curr.getNext();
+        }
+        return curr.getData();
     }
 
     /**
@@ -151,8 +228,7 @@ public class SinglyLinkedList<T> {
      * @return true if empty, false otherwise
      */
     public boolean isEmpty() {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        return size == 0;
     }
 
     /**
@@ -163,8 +239,7 @@ public class SinglyLinkedList<T> {
      * Must be O(1).
      */
     public void clear() {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        head = null;
     }
 
     /**

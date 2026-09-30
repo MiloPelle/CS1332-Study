@@ -5,19 +5,18 @@
         "lib/**/*.jar"
     ],
 
-    // Study mode: no code suggestions of any kind in this project.
-    // Autocomplete popups
+    // Standard editor and Java completion suggestions
     "editor.quickSuggestions": {
-        "other": "off",
+        "other": "on",
         "comments": "off",
         "strings": "off"
     },
-    "editor.suggestOnTriggerCharacters": false,
-    "editor.wordBasedSuggestions": "off",
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.wordBasedSuggestions": "currentDocument",
     "editor.snippetSuggestions": "none",
     "editor.tabCompletion": "off",
-    "editor.acceptSuggestionOnEnter": "off",
-    "java.completion.enabled": false,
+    "editor.acceptSuggestionOnEnter": "on",
+    "java.completion.enabled": true,
 
     // Method signature popups while typing arguments
     "editor.parameterHints.enabled": false,
