@@ -45,7 +45,7 @@ public class ArrayListStudentTest {
         assertBacking(arr(9, 1, 2, 3, 4));
     }
 
-    @Test(timeout = TIMEOUT)
+    @Test(timeout =      TIMEOUT)
     public void testAddToFront() {
         list.addToFront(1);
         list.addToFront(2);

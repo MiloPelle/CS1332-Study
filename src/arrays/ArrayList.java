@@ -48,8 +48,29 @@ public class ArrayList<T> {
      * @throws java.lang.IllegalArgumentException  if data is null
      */
     public void addAtIndex(int index, T data) {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (data == null) {
+            throw new IllegalArgumentException();
+        } else if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if (index == 0) {
+            addToFront(data);
+            return;
+        } else if  (index == size) {
+            addToBack(data);
+            return;
+        }
+
+        if (size == backingArray.length) {
+            resize();
+        }
+
+        for (int i = size - 1; i >= index; i--) {
+            backingArray[i + 1] = backingArray[i];
+        }
+        backingArray[index] = data;
+        size++;
     }
 
     /**
@@ -63,8 +84,24 @@ public class ArrayList<T> {
      * @throws java.lang.IllegalArgumentException if data is null
      */
     public void addToFront(T data) {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (data == null) {
+            throw new IllegalArgumentException();
+        } else if (size == backingArray.length) {
+            resize();
+        }
+        
+        for (int i = size; i > 0; i--) {
+            backingArray[i] = backingArray[i - 1];
+        }
+        backingArray[0] = data;
+        size++;
+    }
+    private void resize() {
+        T[] newArr = (T[]) new Object[backingArray.length * 2];
+        for (int i = 0; i < size; i++) {
+            newArr[i] = backingArray[i];
+        }
+        backingArray = newArr;
     }
 
     /**
@@ -76,8 +113,14 @@ public class ArrayList<T> {
      * @throws java.lang.IllegalArgumentException if data is null
      */
     public void addToBack(T data) {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (data == null) {
+            throw new IllegalArgumentException();
+        } else if (size == backingArray.length) {
+            resize();
+        }
+
+        backingArray[size] = data;
+        size++;
     }
 
     /**
@@ -93,8 +136,11 @@ public class ArrayList<T> {
      * @throws java.lang.IndexOutOfBoundsException if index < 0 or index >= size
      */
     public T removeAtIndex(int index) {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        T tmep = remove
     }
 
     /**
@@ -108,8 +154,17 @@ public class ArrayList<T> {
      * @throws java.util.NoSuchElementException if the list is empty
      */
     public T removeFromFront() {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+        
+        T temp = backingArray[0];
+        for (int i = 0; i < size - 1; i++) {
+            backingArray[i] = backingArray[i + 1];
+        }
+        backingArray[size - 1] = null;
+        size--;
+        return temp;
     }
 
     /**
@@ -121,8 +176,13 @@ public class ArrayList<T> {
      * @throws java.util.NoSuchElementException if the list is empty
      */
     public T removeFromBack() {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+        T temp = backingArray[size - 1];
+        backingArray[size - 1] = null;
+        size--;
+        return temp;
     }
 
     /**
@@ -135,8 +195,10 @@ public class ArrayList<T> {
      * @throws java.lang.IndexOutOfBoundsException if index < 0 or index >= size
      */
     public T get(int index) {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        return backingArray[index];
     }
 
     /**
@@ -147,8 +209,7 @@ public class ArrayList<T> {
      * @return true if empty, false otherwise
      */
     public boolean isEmpty() {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        return size == 0;
     }
 
     /**
@@ -160,8 +221,8 @@ public class ArrayList<T> {
      * Must be O(1).
      */
     public void clear() {
-        // WRITE YOUR CODE HERE. Delete the line below when you start.
-        throw new UnsupportedOperationException("TODO");
+        backingArray = (T[]) new Object[INITIAL_CAPACITY];
+        size = 0;
     }
 
     /**
