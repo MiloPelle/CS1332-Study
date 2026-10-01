@@ -1,0 +1,75 @@
+1a. O(n)
+1b. O(n)
+1c. O(1)
+1d. O(log n)
+1e. O(1)
+1f. O(n)
+1g. O(log n)
+
+2a. Deque
+2b. Stack & Queue
+2c. addThirdFromBack() & removeFromBack()
+2d. SinglyLinkedList
+2e. ArrayList
+2f. CircularSinglyLinkedList
+2g. Binary Tree
+2h. Queue
+
+3a. Stack
+103 20 45 _ _ _
+103 20 _ _ _ _
+103 20 50 _ _ _
+103 20 _ _ _ _
+103 _ _ _ _ _
+103 23 _ _ _ _
+
+3b. Queue
+_ _ _ _ 50 3
+23 _ _ _ 50 3
+23 45 _ _ 50 3
+23 45 _ _ _ 3
+23 45 63 _ _ 3
+23 45 63 _ _ _
+23 45 63 20 _ _
+_ 45 63 20 _ _
+  F
+
+4. 20 -> 24 -> //
+
+5a.
+      T
+    /   \
+    T   T
+       / \
+       T  T
+
+5b.
+      T
+    /   \
+    T   T
+   /     \
+   T     T
+
+6a. B, D
+6b. A, B
+
+7a.
+        27
+     /      \
+    12       42
+   /  \     /  \
+   9  22    36   47
+    \
+    10
+
+7b.
+        15
+     /      \
+    6       23
+      \     /  \
+      11    19   31
+           /  \
+          16  21
+
+8. in code
+9. in code

@@ -36,7 +36,13 @@ public class SinglyLinkedList<T> {
      * After completion, the last node becomes the new head.
      */
     public void moveBackToFront() {
-        // YOUR CODE GOES HERE
-
+        Node<T> curr = head;
+        if (head == null || size == 1) {return;}
+        while (curr.next.next != null) {
+            curr = curr;
+        }
+        tail = curr;
+        curr.next = null;
+        head = new Node<T>(curr.next.data, head);
     } // END OF METHOD
 } // END OF CLASS

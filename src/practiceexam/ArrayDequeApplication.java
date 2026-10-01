@@ -30,7 +30,41 @@ public class ArrayDequeApplication {
      * @return boolean whether given string is a valid set of parentheses
      */
     public static boolean validParentheses(String s) {
-        // YOUR CODE HERE
+        if (s == null || s.length() == 0) {
+            throw new IllegalArgumentException();
+        }
+
+        ArrayDeque arr = new ArrayDeque<>();
+        for (int i = 0; i < s.length(); i++) {
+            arr.addLast(s.charAt(i));
+        }
+        
+        int parentheses = 0;
+        int brackets = 0;
+        int squiggles = 0;
+
+        while (arr.size() != 0) {
+            char pop = (char) arr.removeLast();
+            switch (pop) {
+                case ')':
+                    parentheses++;
+                case '(':
+                    parentheses--;
+                case ']':
+                    brackets++;
+                case '[':
+                    brackets--;
+                case '}':
+                    squiggles++;
+                case '{':
+                    squiggles--;
+                default:
+                    if (parentheses < 0 || brackets < 0 || squiggles < 0) {
+                        return false;
+                    }
+            }
+        }
+        return (parentheses == 0 && brackets == 0 && squiggles == 0);
 
     } // END OF METHOD
 } // END OF CLASS
